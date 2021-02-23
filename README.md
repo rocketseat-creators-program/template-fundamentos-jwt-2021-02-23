@@ -1,24 +1,28 @@
-# JWT - Autenticação e melhores práticas
+# [Template] Fundamentos de JWT para uma autenticação mais segura
 
-Repositório do Workshop de melhores práticas usando JWT.
+<img src="https://storage.googleapis.com/golden-wind/experts-club/capa-github.svg" />
 
-Na branch `complete` você encontra a versão final do projeto feita durante o workshop.
+*Esse repositório não contém o código finalizado e sim o template para dar início à aula.*
 
-Este projeto foi desenvolvido em um Mac, mas acredito que tudo rode em Linux, e no Windows com algumas modificações em alguns comandos.
+O JWT é amplamente utilizado como uma forma de autenticação, porém, se não tivermos o conhecimento necessário e aplicarmos algumas boas práticas, esta forma de autenticação pode ter falhas que comprometem a segurança das nossas aplicações e dos nossos dados.
 
-## Requisitos
+Nesta aula implementamos uma autenticação do 0, vendo alguns erros comuns e, em pouco tempo, aplicamos algumas práticas que aumentam muito a segurança no nosso backend.
 
-Este projeto consiste de uma API feita em Node.js que consome um banco PostgreSQL. Há um arquivo `.nvmrc` no projeto caso queira realizar a instalação usando o [nvm](https://github.com/nvm-sh/nvm).
+## Expert
 
-O arquivo que possui o uso das libs do JWT em si, é o `src/services/token.js`
+| [<img src="https://avatars.githubusercontent.com/u/711732?s=460&u=6b1039f8a921c5733d92d13b2971c55157fee005&v=4" width="75px;"/>](https://github.com/askmon) |
+| :-: |
+|[André Spanguero Kanayama](https://github.com/askmon)|
 
 ## Rodando o projeto
 
-Para rodar o projeto é necessário rodar um banco Postgres, sugiro o uso do docker. Pode ser usado o seguinte comando:
+Este projeto consiste de uma API feita em Node.js que consome um banco PostgreSQL. Há um arquivo `.nvmrc` no projeto caso queira realizar a instalação usando o [nvm](https://github.com/nvm-sh/nvm).
 
-`docker run --name db-jwt-example -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres`
+Para rodar o projeto é necessário rodar um banco PostgreSQL, sugiro o uso do docker e docker-compose. O projeto já contém um arquivo do docker-compose, então basta usar o seguinte comando:
 
-Caso queira rodar em outro local, lembre-se de editar a url no arquivo `config/database.js`.
+`docker-compose up`
+
+Usei o dotenv para variáveis de ambiente, então pode-se renomear o arquivo `.env.example` para `.env` e aproveitar as variáveis de ambiente de lá. Por padrão elas apontam para o banco PostgreSQL so docker-compose.
 
 O próximo passo é instalar as depêndencias:
 
@@ -32,9 +36,9 @@ E então pode-se rodar com nodemon:
 
 `npm run dev`
 
-Para facilitar os testes dos endpoints, pode ser usado o arquivo `JWT.postman_collection.json`
+Para facilitar os testes dos endpoints, pode ser usado o arquivo `JWT.postman_collection.json`. Também utilizao bastante o debugger de JWT disponível [aqui](https://jwt.io/).
 
-## Comandos para criação de chaves privada e pública
+## Comandos para criação de chaves privada e pública (testados no MacOS)
 
 ```
 openssl genrsa -out private-key.pem 2048 
@@ -42,16 +46,3 @@ openssl rsa -in private-key.pem -pubout -out public-key.pem
 ```
 
 Caso queira usar chaves previamente geradas, copie o arquivo `.env.example` para o arquivo `.env`. Mas lembre-se: **Não** use essas chaves em produção, **apenas** para teste.
-
-## Dúvidas
-
-Qualquer dúvida/problema referente ao projeto, sinta-se livre para abrir uma issue no projeto que eu vou responder assim que possível.
-
-## Links e referências
-
-Escrevi um artigo em que falo de alguns conceitos abordados no workshop, ele pode ser acessado clicando [aqui](https://askanayama.medium.com/entendendo-a-autentica%C3%A7%C3%A3o-com-jwt-2c562697a240).
-
-- [jwt.io](https://jwt.io/) - Debugger e referências sobre JWT (em inglês)
-- [Melhores práticas ao usar JWT](https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/) (em inglês)
-- [RFC do JWT](https://tools.ietf.org/html/rfc7519) (em inglês)
-- [Claims do JWT](https://ldapwiki.com/wiki/JSON%20Web%20Token%20Claims) - Aqui você encontra as reserved claims com breves explicações e também as do - [OpenID Connect Standard Claims](https://ldapwiki.com/wiki/OpenID%20Connect%20Standard%20Claims)
