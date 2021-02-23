@@ -1,0 +1,48 @@
+{
+  "name": "jwt-rs",
+  "version": "1.0.0",
+  "description": "Repositório do Workshop de JWT para a Rocketseat",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run sequelize:migrate && node src/index.js",
+    "dev": "NODE_ENV=dev nodemon --inspect=0.0.0.0 src/index.js",
+    "lint": "eslint ./src ./config --ext .json --ext .js --fix",
+    "sequelize:migrate": "sequelize db:migrate --env database"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/askmon/jwt-rocketseat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/askmon/jwt-rocketseat/issues"
+  },
+  "homepage": "https://github.com/askmon/jwt-rocketseat#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "ramda": "^0.26.1",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.0",
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "sequelize-cli": "^5.5.1"
+  }
+}
